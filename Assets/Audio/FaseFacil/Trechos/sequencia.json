@@ -1,0 +1,204 @@
+{
+  "source": "fase_facil.wav",
+  "source_url": "https://youtu.be/IMUXXXSFSw4",
+  "sample_rate": 48000,
+  "frames": 9241357,
+  "duration": 192.52827083333332,
+  "pcm_sha256": "caf847bc6ad08cfc130bd7b67cfbd46846b5880f9c1d9c6f3c2c68a534016594",
+  "note_spacing": 40.84141376291105,
+  "clips": [
+    {
+      "file": "fase_facil_01.wav",
+      "guid": "b9fe60dce7e14f878e8e2617ffe680b6",
+      "first_sample": 0,
+      "last_sample_exclusive": 385966,
+      "start_seconds": 0.0,
+      "end_seconds": 8.040958333333334
+    },
+    {
+      "file": "fase_facil_02.wav",
+      "guid": "2ca4bdadb9cc47d08791d0156115a2f5",
+      "first_sample": 385966,
+      "last_sample_exclusive": 771332,
+      "start_seconds": 8.040958333333334,
+      "end_seconds": 16.069416666666665
+    },
+    {
+      "file": "fase_facil_03.wav",
+      "guid": "752713cbede04a269fabeef2127c1c11",
+      "first_sample": 771332,
+      "last_sample_exclusive": 1155119,
+      "start_seconds": 16.069416666666665,
+      "end_seconds": 24.064979166666667
+    },
+    {
+      "file": "fase_facil_04.wav",
+      "guid": "63c9792ebe3d46bbbabdb9136a7a45dd",
+      "first_sample": 1155119,
+      "last_sample_exclusive": 1541269,
+      "start_seconds": 24.064979166666667,
+      "end_seconds": 32.109770833333336
+    },
+    {
+      "file": "fase_facil_05.wav",
+      "guid": "9d0eeef05b274b148c49b46a647db095",
+      "first_sample": 1541269,
+      "last_sample_exclusive": 1923928,
+      "start_seconds": 32.109770833333336,
+      "end_seconds": 40.081833333333336
+    },
+    {
+      "file": "fase_facil_06.wav",
+      "guid": "9591ba7ad3f54e65922f285cb70b6e73",
+      "first_sample": 1923928,
+      "last_sample_exclusive": 2311908,
+      "start_seconds": 40.081833333333336,
+      "end_seconds": 48.16475
+    },
+    {
+      "file": "fase_facil_07.wav",
+      "guid": "96209fce2a804dee98b96eb7860653f4",
+      "first_sample": 2311908,
+      "last_sample_exclusive": 2696274,
+      "start_seconds": 48.16475,
+      "end_seconds": 56.172375
+    },
+    {
+      "file": "fase_facil_08.wav",
+      "guid": "f7aa52768fb04a848d72434dea1af5bb",
+      "first_sample": 2696274,
+      "last_sample_exclusive": 3082370,
+      "start_seconds": 56.172375,
+      "end_seconds": 64.21604166666667
+    },
+    {
+      "file": "fase_facil_09.wav",
+      "guid": "a0c19fd2ae244104b053b7d06c6b7989",
+      "first_sample": 3082370,
+      "last_sample_exclusive": 3466358,
+      "start_seconds": 64.21604166666667,
+      "end_seconds": 72.21579166666666
+    },
+    {
+      "file": "fase_facil_10.wav",
+      "guid": "646db8f97432446980a99931acd3cc35",
+      "first_sample": 3466358,
+      "last_sample_exclusive": 3849793,
+      "start_seconds": 72.21579166666666,
+      "end_seconds": 80.20402083333333
+    },
+    {
+      "file": "fase_facil_11.wav",
+      "guid": "953a3af740064efd8cc2afecb47ea7f4",
+      "first_sample": 3849793,
+      "last_sample_exclusive": 4236211,
+      "start_seconds": 80.20402083333333,
+      "end_seconds": 88.25439583333333
+    },
+    {
+      "file": "fase_facil_12.wav",
+      "guid": "537dd786d52442a9857577fdd5660d98",
+      "first_sample": 4236211,
+      "last_sample_exclusive": 4621000,
+      "start_seconds": 88.25439583333333,
+      "end_seconds": 96.27083333333333
+    },
+    {
+      "file": "fase_facil_13.wav",
+      "guid": "3137368254b74de39dbb7f3d4041fb8a",
+      "first_sample": 4621000,
+      "last_sample_exclusive": 5006445,
+      "start_seconds": 96.27083333333333,
+      "end_seconds": 104.3009375
+    },
+    {
+      "file": "fase_facil_14.wav",
+      "guid": "ae82f78f83114dad9ac43462fc07f89f",
+      "first_sample": 5006445,
+      "last_sample_exclusive": 5392312,
+      "start_seconds": 104.3009375,
+      "end_seconds": 112.33983333333333
+    },
+    {
+      "file": "fase_facil_15.wav",
+      "guid": "c670769ccc834cd5a51e9d9ff120caa2",
+      "first_sample": 5392312,
+      "last_sample_exclusive": 5774269,
+      "start_seconds": 112.33983333333333,
+      "end_seconds": 120.29727083333333
+    },
+    {
+      "file": "fase_facil_16.wav",
+      "guid": "4438de0469634bce9e8e1796a224dc63",
+      "first_sample": 5774269,
+      "last_sample_exclusive": 6159964,
+      "start_seconds": 120.29727083333333,
+      "end_seconds": 128.33258333333333
+    },
+    {
+      "file": "fase_facil_17.wav",
+      "guid": "1bb5074478f14e6c887aa53702ae851e",
+      "first_sample": 6159964,
+      "last_sample_exclusive": 6546878,
+      "start_seconds": 128.33258333333333,
+      "end_seconds": 136.39329166666667
+    },
+    {
+      "file": "fase_facil_18.wav",
+      "guid": "744d52b74f994a468107b77d454e6cc5",
+      "first_sample": 6546878,
+      "last_sample_exclusive": 6930732,
+      "start_seconds": 136.39329166666667,
+      "end_seconds": 144.39025
+    },
+    {
+      "file": "fase_facil_19.wav",
+      "guid": "6a3c0ee886bd4cf894ca3f6426d515da",
+      "first_sample": 6930732,
+      "last_sample_exclusive": 7317427,
+      "start_seconds": 144.39025,
+      "end_seconds": 152.44639583333333
+    },
+    {
+      "file": "fase_facil_20.wav",
+      "guid": "563b2a7c578e415d852d82e6e957ad00",
+      "first_sample": 7317427,
+      "last_sample_exclusive": 7701543,
+      "start_seconds": 152.44639583333333,
+      "end_seconds": 160.4488125
+    },
+    {
+      "file": "fase_facil_21.wav",
+      "guid": "e3c8ef8e00f34d74926e50bb5752e654",
+      "first_sample": 7701543,
+      "last_sample_exclusive": 8085401,
+      "start_seconds": 160.4488125,
+      "end_seconds": 168.44585416666666
+    },
+    {
+      "file": "fase_facil_22.wav",
+      "guid": "0ece0ae17e7f4520a09a4bfe81a04d3f",
+      "first_sample": 8085401,
+      "last_sample_exclusive": 8470829,
+      "start_seconds": 168.44585416666666,
+      "end_seconds": 176.47560416666667
+    },
+    {
+      "file": "fase_facil_23.wav",
+      "guid": "87e3587a24024a0a8b3681283fa6fe0f",
+      "first_sample": 8470829,
+      "last_sample_exclusive": 8857522,
+      "start_seconds": 176.47560416666667,
+      "end_seconds": 184.53170833333334
+    },
+    {
+      "file": "fase_facil_24.wav",
+      "guid": "8fe24082768a4a04ac437c199754b08b",
+      "first_sample": 8857522,
+      "last_sample_exclusive": 9241357,
+      "start_seconds": 184.53170833333334,
+      "end_seconds": 192.52827083333332
+    }
+  ],
+  "cut_strategy": "Consecutive PCM samples; low-amplitude boundaries within 40ms of each nominal cut."
+}

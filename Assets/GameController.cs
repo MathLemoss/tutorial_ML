@@ -35,6 +35,11 @@ public static class GameController
             Collected++;
     }
 
+    public static void RegisterCollectable()
+    {
+        TotalCollectables++;
+    }
+
     public static void Win()
     {
         if (State == MatchState.Playing)

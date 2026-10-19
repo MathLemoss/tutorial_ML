@@ -18,11 +18,15 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        hudText.text = $"Pontos: {GameController.Score}    Notas: {GameController.Collected}/{GameController.TotalCollectables}"
-            + $"\nTempo: {GameController.ElapsedTime:0.0}s    Percurso: {Mathf.FloorToInt(level.Progress * 100f)}%";
+        bool hasMusic = level.music != null && level.music.HasTrack;
+        string progressLabel = hasMusic ? "Musica" : "Percurso";
+        hudText.text = $"Pontos: {GameController.Score}    Notas: {GameController.Collected}"
+            + $"\nTempo: {GameController.ElapsedTime:0.0}s    {progressLabel}: {Mathf.FloorToInt(level.Progress * 100f)}%";
         instructionsText.text = GameController.State == GameController.MatchState.Ready
-            ? "ESPACO / A para comecar\nCada toque alterna entre subir e descer. Evite as paredes!"
-            : "ESPACO / A: trocar direcao";
+            ? "ESPACO / A para comecar\nPegue as notas para liberar a musica. Evite as paredes!"
+            : hasMusic && level.music.IsWaiting
+                ? "Pegue uma nota para continuar a musica!"
+                : "ESPACO / A: trocar direcao";
         instructionsText.gameObject.SetActive(!GameController.gameOver);
 
         if (endGamePanel.activeSelf != GameController.gameOver)
@@ -31,7 +35,7 @@ public class UIManager : MonoBehaviour
             if (GameController.gameOver)
             {
                 string title = GameController.State == GameController.MatchState.Won
-                    ? "Percurso concluido!" : "Marrone te pegou!";
+                    ? (hasMusic ? "Musica completa!" : "Percurso concluido!") : "Marrone te pegou!";
                 resultText.text = $"{title}\n<size=65%>Tempo: {GameController.ElapsedTime:0.0}s | Pontos: {GameController.Score}</size>";
                 if (EventSystem.current != null)
                     EventSystem.current.SetSelectedGameObject(endGamePanel.GetComponentInChildren<Button>().gameObject);

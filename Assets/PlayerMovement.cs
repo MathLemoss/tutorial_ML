@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Min(0.1f)]
-    public float speed = 5f;
+    public float speed = 8f;
+    [SerializeField] private SequentialMusicPlayer music;
     private Rigidbody2D rb;
     private AudioSource collectAudio;
     private int verticalDirection = 1;
@@ -60,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
         rb.simulated = false;
         if (collectAudio != null)
             collectAudio.Stop();
+        if (music != null)
+            music.StopPlayback();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -67,7 +70,9 @@ public class PlayerMovement : MonoBehaviour
         if (GameController.State == GameController.MatchState.Playing && other.CompareTag("Coletavel"))
         {
             other.gameObject.SetActive(false);
-            if (collectAudio != null && collectAudio.clip != null)
+            if (music != null && music.HasTrack)
+                music.ReleaseNext();
+            else if (collectAudio != null && collectAudio.clip != null)
                 collectAudio.Play();
             GameController.Collect();
             Destroy(other.gameObject);

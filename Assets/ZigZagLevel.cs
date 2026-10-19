@@ -6,8 +6,10 @@ public class ZigZagLevel : MonoBehaviour
     public Camera followCamera;
     public float startX = 0f;
     public float finishX = 84f;
+    public SequentialMusicPlayer music;
 
-    public float Progress => Mathf.InverseLerp(startX, finishX, player.position.x);
+    public float Progress => music != null && music.HasTrack
+        ? music.Progress : Mathf.InverseLerp(startX, finishX, player.position.x);
 
     void Awake()
     {
@@ -16,14 +18,17 @@ public class ZigZagLevel : MonoBehaviour
 
     void Update()
     {
-        if (GameController.State == GameController.MatchState.Playing && player.position.x >= finishX)
+        bool finished = music != null && music.HasTrack ? music.IsComplete : player.position.x >= finishX;
+        if (GameController.State == GameController.MatchState.Playing && finished)
             GameController.Win();
     }
 
     void LateUpdate()
     {
-        // Keep Bruno to the left of the screen, with more room to see incoming obstacles.
         float lookAhead = followCamera.orthographicSize * followCamera.aspect * 0.4f;
-        followCamera.transform.position = new Vector3(player.position.x + lookAhead, 0f, -10f);
+        // Na area inicial ampla, acompanhe Bruno se ele se afastar do centro.
+        float verticalMargin = followCamera.orthographicSize * 0.4f;
+        float cameraY = player.position.y - Mathf.Clamp(player.position.y, -verticalMargin, verticalMargin);
+        followCamera.transform.position = new Vector3(player.position.x + lookAhead, cameraY, -10f);
     }
 }
