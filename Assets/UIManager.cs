@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.InputSystem.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -49,8 +50,15 @@ public class UIManager : MonoBehaviour
                 string detail = GameController.State == GameController.MatchState.Lost ? reason + "\n" : "";
                 resultText.text = $"{title}\n<size=65%>{detail}Tempo: {GameController.ElapsedTime:0.0}s | Pontos: {GameController.Score}</size>";
                 if (EventSystem.current != null)
+                {
+                    var input = EventSystem.current.GetComponent<InputSystemUIInputModule>();
+                    if (input != null)
+                        input.deselectOnBackgroundClick = false;
                     EventSystem.current.SetSelectedGameObject(endGamePanel.GetComponentInChildren<Button>().gameObject);
+                }
             }
         }
+        if (showResult && EventSystem.current != null && EventSystem.current.currentSelectedGameObject == null)
+            EventSystem.current.SetSelectedGameObject(endGamePanel.GetComponentInChildren<Button>().gameObject);
     }
 }
