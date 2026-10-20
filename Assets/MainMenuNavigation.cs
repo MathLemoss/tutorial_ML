@@ -9,6 +9,8 @@ public class MainMenuNavigation : MonoBehaviour
     public GameObject homePage;
     public GameObject historyPage;
     public GameObject instructionsPage;
+    public GameObject levelsPage;
+    public LevelSelectionMenu levelSelection;
     public Button playButton;
     public Button historyButton;
     public Button instructionsButton;
@@ -47,11 +49,18 @@ public class MainMenuNavigation : MonoBehaviour
         ShowPage(homePage, returnSelection != null ? returnSelection : playButton);
     }
 
+    public void ShowLevels()
+    {
+        returnSelection = playButton;
+        ShowPage(levelsPage, levelSelection.PreferredButton);
+    }
+
     private void ShowPage(GameObject page, Button selection)
     {
         homePage.SetActive(page == homePage);
         historyPage.SetActive(page == historyPage);
         instructionsPage.SetActive(page == instructionsPage);
+        levelsPage.SetActive(page == levelsPage);
         pageSelection = selection;
         SelectButton();
     }

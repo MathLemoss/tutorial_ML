@@ -61,7 +61,10 @@ public class CorridorExtension : MonoBehaviour
         playerStartX = player.position.x;
         SequentialMusicPlayer music = GetComponent<SequentialMusicPlayer>();
         if (music != null && music.HasTrack)
+        {
             noteSpacing = music.Duration / music.SegmentCount * 0.9f * horizontalSpeed;
+            narrowingDuration = music.Duration;
+        }
 
         var notes = new List<Transform>();
         foreach (Transform child in transform)

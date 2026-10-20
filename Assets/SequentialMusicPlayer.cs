@@ -3,6 +3,7 @@ using UnityEngine;
 public class SequentialMusicPlayer : MonoBehaviour
 {
     [SerializeField] private AudioClip[] clips = new AudioClip[0];
+    [SerializeField] private MusicLevel defaultLevel;
     [SerializeField, Range(0f, 1f)] private float volume = 0.8f;
 
     private readonly AudioSource[] sources = new AudioSource[2];
@@ -21,6 +22,9 @@ public class SequentialMusicPlayer : MonoBehaviour
 
     void Awake()
     {
+        MusicLevel selected = SelectedMusicLevel.Current != null ? SelectedMusicLevel.Current : defaultLevel;
+        if (selected != null)
+            clips = selected.clips;
         if (clips.Length == 0)
             return;
 

@@ -674,6 +674,7 @@ GameObject:
   - component: {fileID: 600000002}
   - component: {fileID: 600000003}
   - component: {fileID: 600000004}
+  - component: {fileID: 600000005}
   m_Layer: 0
   m_Name: Percurso inicial
   m_TagString: Untagged
@@ -802,6 +803,24 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 87e3587a24024a0a8b3681283fa6fe0f, type: 3}
   - {fileID: 8300000, guid: 8fe24082768a4a04ac437c199754b08b, type: 3}
   volume: 0.8
+  defaultLevel: {fileID: 11400000, guid: 6c5177ce5b2e4a538df3553194da4f16, type: 2}
+--- !u!114 &600000005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9f5418b79546c4b92e9a86827094cb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::GameAudioFeedback
+  suspenseClip: {fileID: 8300000, guid: 16b24ad6f433406fb12c76bcf1ba0367, type: 3}
+  victoryClip: {fileID: 8300000, guid: 81b8615c3d8348d5bd881e0e75566999, type: 3}
+  defeatClip: {fileID: 8300000, guid: 3991bd478128494ea84898b15a6d6beb, type: 3}
+  suspenseVolume: 0.45
+  resultVolume: 0.8
 --- !u!114 &600000004
 MonoBehaviour:
   m_ObjectHideFlags: 0
