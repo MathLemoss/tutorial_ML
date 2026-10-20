@@ -1,10 +1,13 @@
 public static class GameController
 {
     public enum MatchState { Ready, Playing, Won, Lost }
+    public enum LossReason { None, Wall, MissedNotes }
 
     public static MatchState State { get; private set; }
     public static int TotalCollectables { get; private set; }
     public static int Collected { get; private set; }
+    public static int ConsecutiveMisses { get; private set; }
+    public static LossReason CauseOfLoss { get; private set; }
     public static int Score => Collected * 100;
     public static float ElapsedTime { get; private set; }
     public static bool gameOver => State == MatchState.Won || State == MatchState.Lost;
@@ -13,6 +16,8 @@ public static class GameController
     {
         TotalCollectables = totalCollectables;
         Collected = 0;
+        ConsecutiveMisses = 0;
+        CauseOfLoss = LossReason.None;
         ElapsedTime = 0f;
         State = MatchState.Ready;
     }
@@ -31,8 +36,20 @@ public static class GameController
 
     public static void Collect()
     {
-        if (State == MatchState.Playing && Collected < TotalCollectables)
+        if (State != MatchState.Playing)
+            return;
+        ConsecutiveMisses = 0;
+        if (Collected < TotalCollectables)
             Collected++;
+    }
+
+    public static void MissNote()
+    {
+        if (State != MatchState.Playing)
+            return;
+        ConsecutiveMisses++;
+        if (ConsecutiveMisses >= 2)
+            Lose(LossReason.MissedNotes);
     }
 
     public static void RegisterCollectable()
@@ -46,9 +63,12 @@ public static class GameController
             State = MatchState.Won;
     }
 
-    public static void Lose()
+    public static void Lose(LossReason reason = LossReason.Wall)
     {
         if (State == MatchState.Playing)
+        {
+            CauseOfLoss = reason;
             State = MatchState.Lost;
+        }
     }
 }

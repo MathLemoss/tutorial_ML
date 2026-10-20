@@ -77,6 +77,7 @@ public class CorridorExtension : MonoBehaviour
         {
             float x = playerStartX + 1f + i * noteSpacing;
             notes[i].localPosition = new Vector3(x, CenterY(x), 0f);
+            notes[i].GetComponent<CollectableNote>().Initialize(player);
         }
         nextNoteX = playerStartX + 1f + notes.Count * noteSpacing;
     }
@@ -99,6 +100,7 @@ public class CorridorExtension : MonoBehaviour
             note.transform.localPosition = new Vector3(nextNoteX, CenterY(nextNoteX), 0f);
             note.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
             note.GetComponent<SpriteRenderer>().color = new Color(1f, 0.8f, 0.15f);
+            note.GetComponent<CollectableNote>().Initialize(player);
             generated.Enqueue(note);
             GameController.RegisterCollectable();
             nextNoteX += Mathf.Max(1f, noteSpacing);

@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private AudioSource collectAudio;
     private int verticalDirection = 1;
+    private bool stopped;
 
     void Awake()
     {
@@ -24,7 +25,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (GameController.gameOver)
+        {
+            StopMovementAndAudio();
             return;
+        }
 
         // Read button edges per rendered frame so quick presses are not lost.
         bool pressed = (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
@@ -57,6 +61,14 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         GameController.Lose();
+        StopMovementAndAudio();
+    }
+
+    private void StopMovementAndAudio()
+    {
+        if (stopped)
+            return;
+        stopped = true;
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
         if (collectAudio != null)
@@ -69,6 +81,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameController.State == GameController.MatchState.Playing && other.CompareTag("Coletavel"))
         {
+            CollectableNote note = other.GetComponent<CollectableNote>();
+            if (note != null && !note.TryCollect())
+                return;
             other.gameObject.SetActive(false);
             if (music != null && music.HasTrack)
                 music.ReleaseNext();
