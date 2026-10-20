@@ -34,7 +34,6 @@ public class GameAudioFeedback : MonoBehaviour
 
     void LateUpdate()
     {
-        // Leia o resultado depois das coletas, colisoes e verificacao de vitoria.
         bool warning = GameController.State == GameController.MatchState.Playing
             && GameController.ConsecutiveMisses == 1;
         if (warning != warningActive)

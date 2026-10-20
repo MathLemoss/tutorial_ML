@@ -21,7 +21,6 @@ public class LevelSelectionMenu : MonoBehaviour
 
     void Awake()
     {
-        // A ordem visual e a escolha usam a mesma lista, ordenada pela duracao real.
         Array.Sort(levels, (a, b) => a.durationSeconds.CompareTo(b.durationSeconds));
         for (int i = 0; i < levels.Length; i++)
             levelLabels[i].text = $"{levels[i].songTitle}\n<size=70%>{levels[i].DurationLabel}</size>";
