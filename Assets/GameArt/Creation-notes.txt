@@ -1,0 +1,13 @@
+ASSETS VISUAIS — BRUNO E MARRONE
+
+Fotos: fornecidas pelo usuário nesta conversa, copiadas sem alteração dos pixels.
+Bruno.png: foto com barba. Marrone.png: foto sem barba.
+NotasMusicais.png: símbolos recriados por geração de imagem integrada a partir da referência fornecida; transparência e recortes usados pelo jogo.
+Capa-Bruno-e-Marrone.png: capa gerada com a ferramenta integrada image_gen, usando as duas fotos como referências e a narrativa do projeto.
+Completar os créditos com os links/fontes originais das fotos e da referência musical antes da entrega.
+
+PROMPT FINAL DA CAPA
+Create a landscape 3:2 cover illustration for a humorous Brazilian 2D music chase game. Reference image 1 is Marrone, the clean-shaven man with swept dark hair. Reference image 2 is Bruno, the man with short beard and dark hair. Keep them recognizable as charming pixel-art caricatures, not photos. Narrative: Bruno stole Marrone's singing voice and is escaping while collecting musical notes; furious Marrone chases him. Depict Bruno in the right foreground wearing a red stage jacket, running/flying along a sharp diagonal zigzag route toward bright golden musical notes, looking back with a mischievous nervous grin. Marrone behind on the left wears a turquoise stage jacket, comically angry and reaching toward Bruno. Suggest the stolen voice as a small glowing musical note near Bruno, no extra character. Angular diagonal corridor walls narrow toward the far right, short red and turquoise movement trails follow the two characters. Dark midnight blue/purple concert atmosphere, restrained amber stage lights and golden notes; strong readable silhouettes. Authentic crisp 16-bit pixel art with visible square pixels, limited palette, deliberate pixel clusters and stepped edges, no smooth digital painting or photorealism. Composition must read clearly as a small game cover with generous outer margin and both faces unobstructed. No title, text, lettering, logos or watermark.
+
+PROMPT FINAL DOS SÍMBOLOS
+Production sprite sheet with exactly four SOLID BLACK music glyphs on fully transparent alpha background. Single horizontal row, four equal cells: treble clef, eighth note, two beamed sixteenth notes, quarter note. Match these four types in the provided reference, but reposition each neatly at the center of its own equal-width quarter of the canvas. Flat pure black (#000000), opaque silhouettes, no gradients, no white parts, no shading, no texture, no grunge, no glow. Remove the checkerboard entirely. All counters/holes inside symbols must be truly transparent. Smooth clean musical font shapes. Each glyph fully contained in its cell with 12% margin. Wide 3:1 image. The sprites will be colored gold by the game shader.

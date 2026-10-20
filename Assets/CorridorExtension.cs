@@ -8,6 +8,8 @@ public class CorridorExtension : MonoBehaviour
     public GameObject upperWallTemplate;
     public GameObject lowerWallTemplate;
     public GameObject notePrefab;
+    public Texture2D noteSheet;
+    public Material noteMaterial;
     public float existingEndX = 92.5f;
 
     [Header("Largura do corredor")]
@@ -21,11 +23,14 @@ public class CorridorExtension : MonoBehaviour
     private float builtThrough;
     private float horizontalSpeed;
     private float playerStartX;
+    private Sprite[] noteSprites;
+    private int nextNoteIndex;
     private readonly Queue<GameObject> generated = new Queue<GameObject>();
 
     void Start()
     {
         horizontalSpeed = Mathf.Max(0.1f, player.GetComponent<PlayerMovement>().speed) / Mathf.Sqrt(2f);
+        CreateNoteSprites();
         ConfigureInitialCourse();
         builtThrough = existingEndX;
         Extend();
@@ -77,9 +82,11 @@ public class CorridorExtension : MonoBehaviour
         {
             float x = playerStartX + 1f + i * noteSpacing;
             notes[i].localPosition = new Vector3(x, CenterY(x), 0f);
+            ConfigureNoteAppearance(notes[i].gameObject, i);
             notes[i].GetComponent<CollectableNote>().Initialize(player);
         }
         nextNoteX = playerStartX + 1f + notes.Count * noteSpacing;
+        nextNoteIndex = notes.Count;
     }
 
     private void Extend()
@@ -99,7 +106,7 @@ public class CorridorExtension : MonoBehaviour
             note.name = "Nota musical";
             note.transform.localPosition = new Vector3(nextNoteX, CenterY(nextNoteX), 0f);
             note.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
-            note.GetComponent<SpriteRenderer>().color = new Color(1f, 0.8f, 0.15f);
+            ConfigureNoteAppearance(note, nextNoteIndex++);
             note.GetComponent<CollectableNote>().Initialize(player);
             generated.Enqueue(note);
             GameController.RegisterCollectable();
@@ -123,6 +130,49 @@ public class CorridorExtension : MonoBehaviour
         wall.name = template.name.Contains("superior") ? "Parede superior" : "Parede inferior";
         ConfigureWall(wall.transform, fromX, toX, side);
         generated.Enqueue(wall);
+    }
+
+    private void CreateNoteSprites()
+    {
+        if (noteSheet == null)
+            return;
+
+        // Regioes dos quatro simbolos na folha, em pixels a partir do canto superior.
+        // Apenas recortes de sprite: a textura original permanece intacta.
+        Rect[] regions = {
+            new Rect(122, 36, 310, 666),
+            new Rect(667, 104, 371, 509),
+            new Rect(1134, 183, 427, 453),
+            new Rect(1829, 100, 212, 540)
+        };
+        noteSprites = new Sprite[regions.Length];
+        for (int i = 0; i < regions.Length; i++)
+        {
+            Rect rect = regions[i];
+            rect.y = noteSheet.height - rect.y - rect.height;
+            noteSprites[i] = Sprite.Create(noteSheet, rect, new Vector2(0.5f, 0.5f),
+                Mathf.Max(rect.width, rect.height), 0, SpriteMeshType.FullRect);
+        }
+    }
+
+    private void ConfigureNoteAppearance(GameObject note, int index)
+    {
+        SpriteRenderer renderer = note.GetComponent<SpriteRenderer>();
+        renderer.color = new Color(1f, 0.8f, 0.15f);
+        if (noteSprites != null)
+        {
+            renderer.color = Color.white;
+            renderer.sprite = noteSprites[index % noteSprites.Length];
+            renderer.sharedMaterial = noteMaterial;
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (noteSprites == null)
+            return;
+        foreach (Sprite sprite in noteSprites)
+            Destroy(sprite);
     }
 
     private void ConfigureWall(Transform wall, float fromX, float toX, float side)
